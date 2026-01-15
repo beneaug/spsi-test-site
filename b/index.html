@@ -25,6 +25,7 @@
             color: var(--fg);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
         }
 
         ::selection { background: var(--accent); color: var(--bg); }
@@ -688,6 +689,48 @@
             }
 
             .footer-links { flex-wrap: wrap; justify-content: center; }
+
+            /* Style picker mobile */
+            .style-picker {
+                bottom: 16px;
+                left: 16px;
+            }
+
+            .style-picker-toggle {
+                width: 44px;
+                height: 44px;
+            }
+
+            .style-picker-panel {
+                min-width: 130px;
+                padding: 10px;
+            }
+
+            .style-picker-label {
+                font-size: 8px;
+                margin-bottom: 8px;
+            }
+
+            .style-picker-option {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: clamp(3rem, 16vw, 5rem);
+            }
+
+            .stat-value {
+                font-size: clamp(3rem, 12vw, 5rem);
+            }
+
+            header, .hero-content, .h-panel, .support-section, .cta-section, footer {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
         }
 
         /* Reveal animations */

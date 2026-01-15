@@ -48,6 +48,7 @@
             color: var(--black);
             -webkit-font-smoothing: antialiased;
             line-height: 1;
+            overflow-x: hidden;
         }
 
         ::selection { background: var(--black); color: var(--white); }
@@ -924,6 +925,47 @@
                 text-align: center;
             }
             .footer-links { flex-wrap: wrap; justify-content: center; }
+
+            /* Style picker mobile */
+            .style-picker {
+                bottom: 16px;
+                left: 16px;
+            }
+
+            .style-picker-toggle {
+                width: 44px;
+                height: 44px;
+            }
+
+            .style-picker-panel {
+                min-width: 130px;
+                padding: 10px;
+            }
+
+            .style-picker-label {
+                font-size: 8px;
+                margin-bottom: 8px;
+            }
+
+            .style-picker-option {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 400px) {
+            .t-display {
+                font-size: clamp(4rem, 18vw, 8rem);
+            }
+
+            .spec-value {
+                font-size: clamp(3.5rem, 14vw, 6rem);
+            }
+
+            .container {
+                padding: 0 16px;
+            }
         }
     </style>
 </head>

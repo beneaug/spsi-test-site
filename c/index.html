@@ -37,6 +37,7 @@
             color: var(--white);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
         }
 
         ::selection {
@@ -793,6 +794,52 @@
             }
 
             .footer-links { flex-wrap: wrap; justify-content: center; }
+
+            /* Style picker mobile */
+            .style-picker {
+                bottom: 16px;
+                left: 16px;
+            }
+
+            .style-picker-toggle {
+                width: 44px;
+                height: 44px;
+            }
+
+            .style-picker-panel {
+                min-width: 130px;
+                padding: 10px;
+            }
+
+            .style-picker-label {
+                font-size: 8px;
+                margin-bottom: 8px;
+            }
+
+            .style-picker-option {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: clamp(2.5rem, 14vw, 4rem);
+            }
+
+            .stat-value {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+            }
+
+            .cta-title {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+            }
+
+            header, .hero, .reveal-section, .features-section, .support-section, .cta-section, footer {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
         }
 
         /* Scroll-triggered reveals */

@@ -43,6 +43,8 @@
             color: var(--white);
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
         }
 
         ::selection {
@@ -918,6 +920,51 @@
             .footer-nav {
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+
+            /* Style picker mobile */
+            .style-picker {
+                bottom: 16px;
+                left: 16px;
+            }
+
+            .style-picker-toggle {
+                width: 44px;
+                height: 44px;
+            }
+
+            .style-picker-panel {
+                min-width: 130px;
+                padding: 10px;
+            }
+
+            .style-picker-label {
+                font-size: 8px;
+                margin-bottom: 8px;
+            }
+
+            .style-picker-option {
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .capability-card-value {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            header {
+                padding: 16px;
             }
         }
 
