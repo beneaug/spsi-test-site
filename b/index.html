@@ -702,6 +702,94 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Style Picker - Dark theme */
+        .style-picker {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .style-picker-toggle {
+            width: 32px;
+            height: 32px;
+            background: var(--fg);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .style-picker-toggle:hover { transform: scale(1.05); }
+
+        .style-picker-toggle svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--bg);
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.3s;
+        }
+
+        .style-picker.collapsed .style-picker-toggle svg { transform: rotate(180deg); }
+
+        .style-picker-panel {
+            background: rgba(20,20,20,0.95);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 12px;
+            margin-bottom: 8px;
+            min-width: 140px;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .style-picker.collapsed .style-picker-panel {
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+        }
+
+        .style-picker-label {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 10px;
+        }
+
+        .style-picker-options { display: flex; flex-direction: column; gap: 2px; }
+
+        .style-picker-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            text-decoration: none;
+            color: rgba(255,255,255,0.5);
+            font-size: 11px;
+            font-weight: 500;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .style-picker-option:hover { background: rgba(255,255,255,0.05); color: var(--fg); }
+        .style-picker-option.active { background: var(--fg); color: var(--bg); }
+
+        .style-picker-option-key {
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            opacity: 0.5;
+            min-width: 14px;
+        }
+
+        .style-picker-option.active .style-picker-option-key { opacity: 0.7; }
     </style>
 </head>
 <body>
@@ -892,6 +980,33 @@
     </div>
 </footer>
 
+<div class="style-picker" id="stylePicker">
+    <div class="style-picker-panel">
+        <div class="style-picker-label">View Styles</div>
+        <div class="style-picker-options">
+            <a href="/" class="style-picker-option">
+                <span class="style-picker-option-key">A</span>
+                Minimal
+            </a>
+            <a href="/b" class="style-picker-option active">
+                <span class="style-picker-option-key">B</span>
+                Immersive
+            </a>
+            <a href="/c" class="style-picker-option">
+                <span class="style-picker-option-key">C</span>
+                Motion
+            </a>
+            <a href="/d" class="style-picker-option">
+                <span class="style-picker-option-key">D</span>
+                Technical
+            </a>
+        </div>
+    </div>
+    <button class="style-picker-toggle" id="stylePickerToggle" aria-label="Toggle style picker">
+        <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+</div>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     // Loader
@@ -994,6 +1109,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    // Style picker toggle
+    const picker = document.getElementById('stylePicker');
+    const toggle = document.getElementById('stylePickerToggle');
+    if (picker && toggle) {
+        toggle.addEventListener('click', () => picker.classList.toggle('collapsed'));
+    }
 });
 </script>
 
